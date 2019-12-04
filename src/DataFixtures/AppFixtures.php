@@ -21,16 +21,16 @@ class AppFixtures extends Fixture
         // TODO: Implement load() method.
         $this->loadUsers($manager);
         $this->loadPackages($manager);
-     //   $this->loadSubscription($manager);
     }
 
     private function loadUsers(ObjectManager $manager): void
     {
-        foreach ($this->getUserData() as [$name, $username, $email]) {
+        foreach ($this->getUserData() as [$name, $username, $email, $isActive]) {
             $user = new User();
             $user->setName($name);
             $user->setUsername($username);;
             $user->setEmail($email);
+            $user->setIsActive($isActive);
             $user->setCreatedAt(new DateTime('now'));
             $user->setUpdatedAt(new DateTime('now'));
             $manager->persist($user);
@@ -55,31 +55,14 @@ class AppFixtures extends Fixture
         }
         $manager->flush();
     }
-   /* private function loadSubscription(ObjectManager $manager): void
-    {
-        foreach ($this->getSubscriptionData() as [$title, $slug, $summary, $content, $publishedAt, $author, $tags]) {
-            $subscription = new Subscription();
-            $subscription->setUser($slug);
-            $subscription->setPackage($summary);
-            $subscription->setIsActive();
-            $subscription->setStartsAt();
-            $subscription->getExpireAt();
-            $subscription->setCreatedAt(new DateTime('now'));
-            $subscription->setUpdatedAt(new DateTime('now'));
 
-            $manager->persist($subscription);
-        }
-        $manager->flush();
-    }
-
-*/
     private function getUserData(): array
     {
         return [
-            // $userData = [$name, $username, $email, $roles];
-            ['John Doe', 'johndoe', 'john_admin@symfony.com'],
-            //['Tom Doe', 'tom_admin', 'kitten', 'tom_admin@symfony.com'],
-            //['John Doe', 'john_user', 'kitten', 'john_user@symfony.com'],
+            // $userData = [$name, $username, $email, $isActive];
+            ['John Doe', 'johndoe', 'john_admin@symfony.com', 1],
+            ['Tom Doe', 'tom_admin', 'kitten', 'tom_admin@symfony.com', 0],
+
         ];
     }
 
@@ -91,10 +74,5 @@ class AppFixtures extends Fixture
             ['Pro', 'pro desc', 50, 'usd', 30],
             ['Elite', 'elite desc', 100, 'usd', 30],
         ];
-    }
-    private function getSubscriptionData()
-    {
-
-
     }
 }
