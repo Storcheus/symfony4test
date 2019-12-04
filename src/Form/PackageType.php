@@ -22,9 +22,6 @@ class PackageType extends AbstractType
             ->add('description', TextareaType::class,   ['required' => false])
             ->add('price', TextareaType::class)
             ->add('currency', TextareaType::class)
-            ->add('duration_days', TextareaType::class)
-           // ->add('createdAt')
-            //->add('updatedAt')
             ->add('save', SubmitType::class,
                 ['label' => 'Save Package'])
         ;
