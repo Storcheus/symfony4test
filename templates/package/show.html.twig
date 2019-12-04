@@ -1,0 +1,43 @@
+<style>
+    th, td {
+        padding: 10px;
+    }
+    th {
+        text-align: left;
+    }
+</style>
+
+<h1>All Packages</h1>
+
+{% if packages is not empty %}
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Desc</th>
+            <th>Price</th>
+            <th>Currency</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for package in packages %}
+            <tr>
+                <td>{{ package.title }}</td>
+                <td>{{ package.description }}</td>
+                <td>{{ package.price }}</td>
+                <td>{{ package.currency }} </td>
+                <td><a href="/package/delete/{{ package.id }}">Delete</a></td>
+                <td><a href="/package/update/{{ package.id }}">Update</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No package found.</p>
+{% endif %}
+
+<br/>
+<a href="/package/create">Create New</a>
+<a href="/">Homepage</a>

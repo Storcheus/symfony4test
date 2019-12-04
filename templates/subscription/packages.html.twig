@@ -1,0 +1,68 @@
+<style>
+    th, td {
+        padding: 10px;
+    }
+    th {
+        text-align: left;
+    }
+
+
+    .whole {
+        height: 200px;
+        width: 150px;
+        background-color: powderblue;
+        border-style: solid;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .btn-price {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+
+
+
+</style>
+
+<h1>All Plans</h1>
+<div><a href="/user/show">View User</a> </div>
+
+<div>
+    {% if packages is not empty %}
+<table>
+    {% for package in packages %}
+
+
+
+            <div class="whole" style="float: left; padding: 10px;">
+                <div class="type">
+                    <p>{{ package.title }}</p>
+                </div>
+                <div class="plan">
+                    <div class="header">
+                        <span>      {{ package.price }} {{ package.currency }}   </span>/month</p>
+                    </div>
+                    <div class="price">
+                        <a class="btn-price" href="/subscribe/{{ package.id }}">Choose plan</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+</table>
+
+    {% else %}
+        <p>No package found.</p>
+    {% endif %}
+
+</div>
+

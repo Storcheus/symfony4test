@@ -1,0 +1,39 @@
+<style>
+    th, td {
+        padding: 10px;
+    }
+    th {
+        text-align: right;
+    }
+</style>
+
+<h1>Create or Update user:</h1>
+
+{{ form_start(form) }}
+
+<table>
+    <tbody>
+    <tr>
+        <th>Name:</th>
+        <td>{{ form_widget(form.name) }}</td>
+    </tr>
+    <tr>
+        <th>username:</th>
+        <td>{{ form_widget(form.username) }}</td>
+    </tr>
+    <tr>
+        <th>user email:</th>
+        <td>{{ form_widget(form.email) }}</td>
+    </tr>
+    <tr>
+        <th>user active:</th>
+        <td>{{ form_widget(form.isActive) }}</td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>{{ form_widget(form.save) }}</td>
+    </tr>
+    </tbody>
+</table>
+
+{{ form_end(form) }}

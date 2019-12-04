@@ -1,0 +1,45 @@
+<style>
+    th, td {
+        padding: 10px;
+    }
+    th {
+        text-align: left;
+    }
+</style>
+
+<h1>All Users</h1>
+
+{% if users is not empty %}
+    <table>
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>username</th>
+            <th>email</th>
+            <th>active</th>
+            <th>package</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.isActive }} </td>
+                <td> {%  if user.subscription is not empty %} {{  user.subscription[user.subscription|length - 1].package.title }} {% else %} not {% endif %}  </td>
+                <td><a href="/user/delete/{{ user.id }}">Delete</a></td>
+                <td><a href="/user/update/{{ user.id }}">Update</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No user found.</p>
+{% endif %}
+
+<br/>
+<a href="/user/create">Create New</a>
+<a href="/">Homepage</a>

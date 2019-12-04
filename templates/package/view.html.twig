@@ -1,0 +1,36 @@
+<style>
+    th, td {
+        padding: 10px;
+    }
+    th {
+        text-align: right;
+    }
+</style>
+
+<h1>package Created or Modified</h1>
+
+<table>
+    <tbody>
+    <tr>
+        <th>Title:</th>
+        <td>{{ package.title }}</td>
+    </tr>
+    <tr>
+        <th>Desc:</th>
+        <td>{{ package.description }}</td>
+    </tr>
+    <tr>
+        <th>package price:</th>
+        <td>{{ package.price }}</td>
+    </tr>
+    <tr>
+        <th>Currency:</th>
+        <td>{{ package.currency }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<a href="/package/show">View All</a> -
+<a href="/package/update/{{ package.id }}">Modify</a>
+<a href="/">Homepage</a>

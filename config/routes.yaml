@@ -1,3 +1,13 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+
+index:
+    path: /
+    controller: App\Controller\SubscriptionController::index
+
+subscribe:
+    path: /subscribe/{id}
+    controller: App\Controller\SubscriptionController::subscribe
+
