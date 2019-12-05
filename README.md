@@ -4,6 +4,8 @@ cp .env.example .env
 
 set variables db_user and db_name
 
+composer install
+
 php bin/console doctrine:database:create
 
 php bin/console doctrine:migrations:migrate
